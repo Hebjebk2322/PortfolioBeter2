@@ -69,12 +69,16 @@ nav {
     -webkit-backdrop-filter: blur(10px);
     /* voor Safari */
     transition: background 0.3s ease, padding 0.3s ease;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+
 }
 
 /* Optioneel: kleiner maken bij scroll */
 nav.scrolled {
     padding: 12px;
     background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+
 }
 
 nav ul {
