@@ -27,7 +27,6 @@ video {
     display: block;
 }
 
-
 h1 {
     font-size: 78.54px;
 }
@@ -50,10 +49,8 @@ li {
     font-size: 13px;
 }
 
-
 nav {
     position: fixed;
-    /* blijft bovenaan het scherm tijdens scrollen */
     top: 0;
     left: 0;
     width: 100%;
@@ -61,29 +58,21 @@ nav {
     display: flex;
     justify-content: flex-end;
     z-index: 1000;
-    /* altijd boven andere content */
     background: rgba(0, 0, 0, 0.4);
-    /* transparant zwart */
     backdrop-filter: blur(10px);
-    /* blur effect */
     -webkit-backdrop-filter: blur(10px);
-    /* voor Safari */
     transition: background 0.3s ease, padding 0.3s ease;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
-
 }
 
-/* Optioneel: kleiner maken bij scroll */
 nav.scrolled {
     padding: 12px;
     background: rgba(0, 0, 0, 0.6);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
-
 }
 
 nav ul {
     display: flex;
-
 }
 
 nav ul.active {
@@ -91,8 +80,6 @@ nav ul.active {
     opacity: 1;
     pointer-events: auto;
     background: rgba(0, 0, 0, 0.5);
-    /* 50% transparant zwart */
-    ;
 }
 
 nav ul li {
@@ -124,12 +111,10 @@ nav a:hover::after {
     width: 100%;
 }
 
-
 .hamburger {
     display: none;
     width: 30px;
     height: 22px;
-    /* hoogte van hamburger */
     position: relative;
     background: none;
     border: none;
@@ -146,40 +131,26 @@ nav a:hover::after {
     transition: all 0.3s ease;
 }
 
-/* gelijkmatige spacing tussen de drie balken */
-.hamburger span:nth-child(1) {
-    top: 0;
-}
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { top: 18px; }
 
-.hamburger span:nth-child(2) {
-    top: 9px;
-}
-
-.hamburger span:nth-child(3) {
-    top: 18px;
-}
-
-/* active state */
 .hamburger.active span:nth-child(1) {
     transform: rotate(45deg);
     top: 9px;
 }
-
 .hamburger.active span:nth-child(2) {
     opacity: 0;
 }
-
 .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg);
     top: 9px;
 }
 
-
 header {
     position: relative;
     width: 100%;
     min-height: auto;
-    /* Allow the image to set the height */
     background: none;
     padding: 0;
     display: block;
@@ -192,7 +163,6 @@ header {
     display: block;
 }
 
-/* Optioneel: tekst binnen hero beter schalen */
 header h1 {
     font-size: clamp(2rem, 6vw, 78.54px);
 }
@@ -200,21 +170,23 @@ header h1 {
 header h2 {
     font-size: clamp(1.5rem, 4vw, 58px);
     margin-top: -2vh;
-    /* iets flexibeler */
 }
-
 
 main h2 {
     color: #BFC8AD;
     text-align: center;
     margin: 2vh 0 3vh;
-    /* Changed from 6vh to 2vh */
 }
 
 .container {
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 5%;
+}
+
+/* Narrow the welcome intro text so it doesn't stretch edge to edge */
+main > article.container {
+    max-width: 55vw;
 }
 
 section article p {
@@ -250,7 +222,6 @@ section.container article {
     width: 100%;
 }
 
-
 .aboutme h2 {
     text-align: center;
     color: #BFC8AD;
@@ -283,7 +254,6 @@ section.container article {
 .about-text ul {
     margin-left: 20px;
 }
-
 
 #portfolio {
     margin: 6vh auto;
@@ -325,7 +295,6 @@ section.container article {
     font-size: 13px;
     text-align: center;
 }
-
 
 .contact-form {
     max-width: 560px;
@@ -420,7 +389,6 @@ section.container article {
     width: 100%;
 }
 
-
 footer {
     background-image: url("../images/footer.svg");
     background-position: center top;
@@ -429,6 +397,7 @@ footer {
     min-height: 300px;
     padding: 60px 20px;
     text-align: center;
+    color: white;
 }
 
 .socials {
@@ -442,6 +411,67 @@ footer img {
     width: 60px;
 }
 
+/* ── Slideshow ── */
+.slider {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.slides img {
+    width: 100%;
+    display: none;
+}
+
+.slides img.active {
+    display: block;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 8px;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 0 4px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #BFC8AD;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.dot.active {
+    background: #90B494;
+    transform: scale(1.25);
+}
+
+.dot:hover {
+    background: #7ea684;
+}
+
+/* ── Back to top button ── */
 #myBtn {
     display: none;
     position: fixed;
@@ -471,25 +501,20 @@ footer img {
 }
 
 @keyframes bounce {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-5px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-5px); }
 }
 
-@media (max-width: 768px) {
+.H3LowerLineHeight {
+    line-height: 1;
+}
 
-    /* 1. Header Fix: Remove background images and forced heights */
+/* ── Responsive ── */
+@media (max-width: 768px) {
     header {
         min-height: auto;
         background-image: none !important;
         padding-top: 75px;
-        /* Creates space for the fixed navigation */
         display: block;
     }
 
@@ -499,13 +524,11 @@ footer img {
         display: block;
     }
 
-    /* 2. Grid & Layout Adjustments */
     section.container,
     .portfolio-grid {
         grid-template-columns: 1fr;
     }
 
-    /* 3. Navigation Adjustments */
     nav {
         padding: 16px 2%;
         min-height: 60px;
@@ -551,27 +574,14 @@ footer img {
 }
 
 @media (max-width: 480px) {
+    h1 { font-size: 36px; line-height: 1.2; }
+    h2 { font-size: 28px; }
+    h3 { font-size: 22px; }
 
-    /* 1. Typography scaling */
-    h1 {
-        font-size: 36px;
-        line-height: 1.2;
-    }
-
-    h2 {
-        font-size: 28px;
-    }
-
-    h3 {
-        font-size: 22px;
-    }
-
-    /* 2. Header Mobile spacing */
     header {
         padding-top: 60px;
     }
 
-    /* 3. Remove Blobs on small screens to keep it clean */
     .blob,
     .contact-blob {
         display: none;
